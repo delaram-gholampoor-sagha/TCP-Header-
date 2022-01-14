@@ -1,0 +1,32 @@
+package main
+
+import (
+	"encoding/binary"
+	"fmt"
+)
+
+func main() {
+
+	sliceofbyte := []byte{
+		0xb7, 0x4e,
+		0x01, 0xbb,
+		0xb1, 0x46,
+		0xa4, 0x61,
+		0x00, 0x00,
+		0x00, 0x00,
+		0xa0, 0x02,
+		0xfa, 0xf0,
+		0x9b, 0xba,
+		0x00, 0x00,
+	}
+
+	type data struct {
+		Value  uint16
+		Label  [10]byte
+		Active bool
+	}
+
+	ddd := binary.BigEndian.Uint16(sliceofbyte[:2])
+	fmt.Println(ddd)
+
+}
